@@ -1,0 +1,25 @@
+<div class="header">
+         <ul>
+
+
+{% if user.is_authenticated %}
+<li><a href="{% url 'browseBooks' %}">Library</a></li>
+<li><a href="{% url 'borrowedBooks' %}">My Books</a></li>
+{% endif %}
+           {% if user.is_staff %}
+           <li><a href="{% url 'home' %}">Home</a></li>
+           <li><a href="/admin">admin</a></li>
+           <li><a href="{% url 'addBook' %}">addBook</a></li>
+           {% else %}
+           <li><a href="{% url 'home' %}">Home</a></li>
+           {% endif %}
+
+           {% if user.is_authenticated %}
+
+           <li><a href="{% url 'edit' %}">Edit</a></li>
+           <li><a href="{% url 'logout' %}">Logout</a></li>
+           {% else %}
+           <li><a href="{% url 'signin' %}">Login</a></li>
+           {% endif %}
+         </ul>
+       </div>

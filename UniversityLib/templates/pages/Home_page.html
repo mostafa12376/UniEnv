@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% block content %}
+<body style="background:none">
+<div class=""style="width:100%;height:200px;position:absolute;top:0;background:red;z-Index:-1">
+
+</div>
+
+
+<div class="" style="display:flex;margin-bottom:0px;">
+<div class="showPanel" ></div>
+
+<div class="welcome">
+<h1 id="words">Welcome to The Library</h1>
+</div>
+
+<div class="showPanel"></div>
+
+</div>
+
+<div class="Hot">
+  {% if count > 0 %}
+  <div class="" style="position:relative;display:flex; justify-content:center">
+  <div class="leftBorder">
+    <h1 class="" >Hot Books</h1>
+  </div>
+  </div>
+<div class="sliderContainer">
+<div class="slidershow middle">
+
+  <div class="slides">
+    <input type="radio" name="r" id="r1" checked>
+    <input type="radio" name="r" id="r2">
+    <input type="radio" name="r" id="r3">
+    <input type="radio" name="r" id="r4">
+    <input type="radio" name="r" id="r5">
+    <div class="slide s1">
+      <div class="sliderAdjust">
+
+      <div class="slideTitle">
+        {{last.title}}
+      </div>
+
+      <div class="look">
+        <label for="">Author:&nbsp {{last.author}}</label>
+    </div>
+    <div class="look">
+      <label for="">Category:&nbsp {{last.category}}</label>
+    </div>
+    <div class="look">
+      <label for="">Publishing year:&nbsp {{last.pubYear}}</label>
+  </div>
+  <div class="look">
+    <label for="">ISBN:&nbsp {{last.ISBN}}</label>
+</div>
+
+  </div>
+    </div>
+
+
+    {% for x in books %}
+    <div class="slide">
+
+      <div class="sliderAdjust">
+
+      <div class="slideTitle">
+        {{x.title}}
+      </div>
+
+      <div class="look">
+        <label for="">Author:&nbsp {{x.author}}</label>
+    </div>
+    <div class="look">
+      <label for="">Category:&nbsp {{x.category}}</label>
+    </div>
+    <div class="look">
+      <label for="">Publishing year:&nbsp {{x.pubYear}}</label>
+  </div>
+  <div class="look">
+    <label for="">ISBN:&nbsp {{x.ISBN}}</label>
+</div>
+
+  </div>
+
+    </div>
+    {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <div class="navigation">
+    <label for="r1" class="bar"></label>
+    {% if count > 1 %}
+    <label for="r2" class="bar"></label>
+    {% endif %}
+    {% if count > 2 %}
+    <label for="r3" class="bar"></label>
+    {% endif %}
+    {% if count > 3 %}
+    <label for="r4" class="bar"></label>
+    {% endif %}
+    {% if count > 4 %}
+    <label for="r5" class="bar"></label>
+    {% endif %}
+  </div>
+</div>
+
+
+</div>
+{% endif %}
+
+<div class="events">
+<div class="eventSideBar">
+<div class=""><h1>Events</h1>
+
+</div>
+</div>
+<div class="homeul">
+<ul>
+  <li class="homeli">Book Club </li>
+  <li class="homeli">Reading Tour</li>
+  <li class="homeli">English Conversation Group</li>
+  <li class="homeli">Online short story discussion</li>
+  <li class="homeli">Career and Resilience Coaching </li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+<div id="aboutUs">
+
+<div id="aboutUsTitle">
+About Us
+</div>
+<div id="aboutUsContent">
+<h1 class="aboutUsContentH">Who we are</h1>
+<p class="aboutUsContentP">&nbspWe are a passionate <strong>team of developers</strong>, seeking to learn the amazing things<br> to help us make professional websites and give us
+   experience in frontend and<br> backend fields Currently we are still students in the faculty of Computers <br>
+   and Artificial intelligence Cairo University.
+</p>
+<br>
+<h1 class="aboutUsContentH">What is this website</h1>
+<p  class="aboutUsContentP">&nbsp This website is an online library for the faculty.
+  It is our course's final project.<br> We added every tip and
+  trick we learned from this course. The project was<br>
+   divided into two parts the frontend and the backend</p>
+
+</div>
+
+
+</div>
+</body>
+{% endblock content%}

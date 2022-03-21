@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body id="browseBody">
+
+       <form method="GET">
+           <div class="list">
+               <input class="input_search" list="search" name="booksSearch" placeholder="search...">
+               <datalist id="search">
+                 {% for x in books %}
+                   <option value="{{x.title}}"></option>
+                  {% endfor %}
+               </datalist>
+               <label for="books" class="choose crteria">Criteria</label>
+               <select  name="crt" id="books">
+                     <option value="1">title</option>
+                     <option value="1">title</option>
+                     <option value="2">author</option>
+                     <option value="3">ISBN</option>
+                     <option value="4">publish year</option>
+               </select>
+           </div>
+
+
+        <div class="select">
+             <label for="books" class="choose">choose Category</label>
+             <select   name="cat" id="books">
+               <option value="ALL" >CATEGORY</option>
+              <option value="ALL">ALL</option>
+               {% for x in choices %}
+               <option value="{{x}}">{{x}}</option>
+               {% endfor %}
+            </select>
+
+
+        </div>
+        </form>
+
+
+         <div class="booksContainer">
+           <h1 style="color:black;font-family:Tahoma;border-left:7px solid #515fc8">Books</h1>
+           {% if count == 0 %}
+           <script type="text/javascript">
+               alert("No Books with the desired Criteria")
+           </script>
+           {% endif %}
+            {% for x in books %}
+           <div class="book">
+             <div class="icon">
+               {% load static %}
+               <img src="{% static '/images/bookLogo.png' %}" alt="">
+             </div>
+             <div class="content">
+
+               <form method="POST" action="{% url 'browseBooks' %}">
+                 {% csrf_token %}
+               <h3 class="title" name="bookName">Book Name: &nbsp {{x.title}}</h3>
+               <p><strong>Category:</strong>&nbsp {{x.category}}</p>
+               <p><strong>PubYear:</strong>&nbsp {{x.pubYear}}</p>
+               <p><strong>author:</strong>&nbsp {{x.author}}</p>
+               <span name="ISBN"><strong>ISPN:</strong>&nbsp {{x.ISBN}}</span>
+               <button type="submit" name="ISBN" class="borrow" value="{{x.ISBN}}">Borrow</button>
+
+               </form>
+             </div>
+
+
+           </div>
+
+           {% endfor %}
+
+
+         </div>
+
+
+{% endblock %}

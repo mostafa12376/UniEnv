@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<body id="BookingBG">
+<div class="div_one">
+        <form method="POST">
+          {% csrf_token %}
+		<legend>Adding New Book</legend>
+
+                <input name="title" type="text" class="input_text" id="input1" placeholder="Book Name" required=true> <br>
+                <input name="author" type="text" class="input_text" id="input2" placeholder="Book author" required=true> <br>
+                <input name="PubYear" type="number" class="input_text" id="input3"placeholder="Book release date" required=true min="1800" max="2021"> <br>
+                <input name="ISBN" type="number" class="input_text" id="input4"placeholder="Book ISBN" required=true> <br>
+                <select name="type" class="input_text" id="input5" name="" >
+                  {% for x in choices %}
+                  <option value="{{x}}">{{x}}</option>
+                  {% endfor %}
+                </select>
+                <input name="copy" type="number" class="input_text" id="input6" min="1" placeholder="copies" required=true>  <br>
+                <input type="submit" class="submit1" value="Add Book"> <br>
+
+        </form>
+    </div>
+</body>
+    {% endblock %}

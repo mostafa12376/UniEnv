@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="signin-container" style="width: 500px;height: 400px;border: 3px solid gray">
+  <form class="login"  name="signupForm" onsubmit="return validateForm()" method="POST" >
+      {% csrf_token %}
+
+
+    <label class="signin-label">Sign up <hr></label>
+
+
+    <div class="input-field">
+      <label>username:</label>
+      <input type="text" name="username"  placeholder="Username" value="" style="width:50%;height:2em;" required>
+    </div>
+    <div class="input-field">
+      <label>email:</label>
+      <input type="email" name="email" placeholder="Email" value="" style="width:50%;height:2em;" required>
+    </div>
+    <div class="input-field">
+      <label>password:</label>
+      <input type="password" name="password" id="password" placeholder="Password" value="" style="width:50%;height:2em;" required>
+    </div>
+
+    <div class="input-field">
+      <label>confirm password:</label>
+      <input type="password" name="confirmPassword"   id="confirmPassword" placeholder="Confirm Password" value="" style="width:50%;height:2em;" required>
+    </div>
+
+
+    <div  class="input-field">
+        <label for="">choose account type</label>
+        <select  name = "userType" style="width:51%;height:2.3em;" >
+            <option value = "user">student</option>
+            <option value = "admin">admin</option>
+        </select>
+    </div>
+
+<input type="submit"  value="Submit" id="signin" style="margin-left:120px;width:50%;height:50px;">
+
+
+<div class="create">
+  <hr>
+  <a href="{% url 'signin' %}">Already have an account</a>
+</div>
+</form>
+   </div>
+{% if count == 1 %}
+<script type="text/javascript">
+  alert("Please choose another username");
+  document.forms["signupForm"]["username"].focus();
+</script>
+{% endif %}
+
+
+{% endblock content %}

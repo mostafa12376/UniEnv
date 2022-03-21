@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{%block content%}
+
+
+<div class="signin-container">
+  <form class="login"  method="POST" >
+      {% csrf_token %}
+
+
+    <label class="signin-label">Login <hr></label>
+
+
+    <div class="input-field">
+      <label>username:</label>
+      <input type="text" name="username" placeholder="Username" value="" style="width:70%;height:2em;" required>
+    </div>
+    <div class="input-field">
+      <label>password:</label>
+      <input type="password" name="password" placeholder="Password" value="" style="width:70%;height:2em;" required>
+    </div>
+<input type="submit" name="SignIn" value="Login" id="signin" style="margin-left:50px">
+
+<div class="create">
+  <hr>
+  <a href="{% url 'signup' %}">Create new account</a>
+</div>
+</form>
+   </div>
+
+   {% if count == 1  %}
+   <script type="text/javascript">
+     alert("Wrong username or password")
+   </script>
+   {% endif %}
+
+
+{%endblock content%}
